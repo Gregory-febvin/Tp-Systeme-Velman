@@ -1,5 +1,18 @@
 #include "Timer.h"
 #include "BDD.h"
+//*********************************************************************************************
+//* Programme : Timer.cpp date : 07/12/2021
+//*---------------------------------------------------------------------------------------------------------
+//* dernière mise a jour : 07/12/2021
+//*
+//*Programmeurs : Febvin Grégory classe : BTSSN2
+//* Lea Bernard
+//*--------------------------------------------------------------------------------------------------------
+//* BUT : Effectuer des mesure avec une connection a la carte espacé avec des timer
+//*Programmes associés : AUCUN
+//*********************************************************************************************
+//--------------------------------------------------------------------------------------------- 
+
 
 TimerChrono::TimerChrono(BDD * db, QObject *parent) : QObject(parent)
 {
@@ -19,10 +32,10 @@ void TimerChrono::takeTemp() {
 
 	this->Value = carteES->ReadAnalogChannel( 1 );
 	double Volt = Value / 255.0 * 5.0;
-	double Temp�rature = (Volt * 90.0 / 5.0) - 30.0;
+	double Température = (Volt * 90.0 / 5.0) - 30.0;
 	qDebug() << Volt;
-	qDebug() << Temp�rature;
-	db->InsertBdd(Volt, Temp�rature);
+	qDebug() << Température;
+	db->InsertBdd(Volt, Température);
 }
 
 TimerChrono::~TimerChrono()
